@@ -893,13 +893,16 @@ body,
 }
 
 .single-page-main p,
-.single-page-main span,
 .single-page-main a,
 .single-page-main div,
 .font-body-md,
 .font-body-lg,
 .text-body-md,
 .text-body-lg {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.single-page-main span:not(.material-symbols-outlined) {
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
