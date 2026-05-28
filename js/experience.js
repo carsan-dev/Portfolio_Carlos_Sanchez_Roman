@@ -1,0 +1,155 @@
+﻿tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#a2ffca",
+                      "inverse-primary": "#006c45",
+                      "surface-tint": "#00e295",
+                      "secondary-container": "#7701d0",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#2e3731",
+                      "surface-variant": "#2e3731",
+                      "on-error-container": "#ffdad6",
+                      "on-error": "#690005",
+                      "outline": "#849589",
+                      "border-subtle": "#27272A",
+                      "tertiary": "#ffe8c8",
+                      "secondary-fixed": "#efdbff",
+                      "syntax-punctuation": "#71717A",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#006640",
+                      "surface-container": "#19221c",
+                      "on-tertiary": "#422c00",
+                      "secondary": "#dcb8ff",
+                      "background": "#0d1510",
+                      "primary-container": "#13ec9c",
+                      "syntax-string": "#E4E4E7",
+                      "primary-fixed-dim": "#00e295",
+                      "primary-fixed": "#4fffb0",
+                      "on-primary-fixed-variant": "#005233",
+                      "surface-bright": "#323b35",
+                      "background-dark": "#0A0A0C",
+                      "tertiary-container": "#ffc661",
+                      "text-muted": "#71717A",
+                      "accent-ai": "#8A2BE2",
+                      "on-surface": "#dbe5dc",
+                      "on-background": "#dbe5dc",
+                      "text-main": "#E4E4E7",
+                      "surface": "#131317",
+                      "inverse-surface": "#dbe5dc",
+                      "on-secondary": "#480081",
+                      "on-primary-fixed": "#002112",
+                      "on-surface-variant": "#bacbbe",
+                      "surface-container-lowest": "#08100b",
+                      "outline-variant": "#3b4a40",
+                      "tertiary-fixed": "#ffdeab",
+                      "on-primary": "#003822",
+                      "secondary-fixed-dim": "#dcb8ff",
+                      "on-secondary-container": "#dcb7ff",
+                      "on-secondary-fixed": "#2c0051",
+                      "surface-container-high": "#232c26",
+                      "surface-dim": "#0d1510",
+                      "on-tertiary-fixed": "#271900",
+                      "on-secondary-fixed-variant": "#6700b5",
+                      "on-tertiary-container": "#765200",
+                      "inverse-on-surface": "#2a322c",
+                      "on-tertiary-fixed-variant": "#5f4100",
+                      "syntax-key": "#13ec9c",
+                      "tertiary-fixed-dim": "#f5bd59",
+                      "surface-container-low": "#151d18"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "1rem",
+                      "stack-md": "1.5rem",
+                      "stack-sm": "0.5rem",
+                      "container-padding": "2rem",
+                      "sidebar-width": "256px",
+                      "stack-lg": "5rem"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Space Grotesk"
+                      ],
+                      "label-sm": [
+                              "Space Grotesk"
+                      ],
+                      "headline-xl-mobile": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Cabinet Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ],
+                      "code-md": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Cabinet Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "60px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "36px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+

@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html><html class="dark" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The Hybrid Workshop | Carlos Sánchez Román</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&amp;family=Cabinet+Grotesk:wght@400;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="js/root.js"></script>
+<link rel="stylesheet" href="css/root.css">
+</head>
+<body class="bg-background-dark text-on-background min-h-screen overflow-x-hidden flex flex-col md:flex-row relative">
+<!-- Background Effects -->
+<div class="fixed inset-0 pointer-events-none z-0" style="background: radial-gradient(circle at 50% 50%, rgba(162, 255, 202, 0.05) 0%, transparent 100%);"></div>
+<div class="fixed inset-0 grid-bg pointer-events-none z-0 opacity-100"></div>
+<!-- SideNavBar Component -->
+<nav class="hidden md:flex flex-col h-screen w-sidebar-width fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-border-subtle text-primary font-code-md text-code-md z-40 h-screen">
+<div class="p-gutter border-b border-border-subtle flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center border border-border-subtle overflow-hidden shrink-0"><img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUVhyAdDaju9FqyFOm02audORsB7sDBlH-DEZkl_pFM90blB1Wo2qKHIVEAcEh6Q8RC6CYq5uuvGPqrMOx6OkxQAZyE2_TR9kbwa0niBO-DZRiKhIMyAt1VLbnBDU-Ue296fwyrL8t_sCfde-SccUvp9Qyp5QNxTWD3N0x7F3MPRbw3ruyfE8sXBjNHKzgf-ggpqEpzTyYXVZkwk9mTA8SFg7ZVJ9ROd1MOqbo2aKsSWWav8CNV82btz9Q4MMYTCUSQQwCWMvnSJF"></div><div class="flex-1 min-w-0"><h1 class="font-headline-lg font-bold text-primary text-[13px] leading-tight truncate">DATA_ARCHITECT</h1><p class="font-code-md text-on-surface-variant text-[9px] uppercase tracking-wider truncate">v2.4.0-stable</p></div></div>
+<div class="flex-1 py-4 flex flex-col space-y-1 flex-grow">
+<a class="font-code-md text-code-md text-primary border-l-2 border-primary bg-primary/5 hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 flex items-center px-4 py-3" href="index.html">
+<span class="material-symbols-outlined fill mr-4 text-[18px]">folder_open</span>
+<span class="">raíz</span>
+</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 flex items-center px-4 py-3 group" href="projects.html">
+<span class="material-symbols-outlined mr-4 text-[18px]">terminal</span>
+<span class="">proyectos</span>
+</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 flex items-center px-4 py-3 group" href="experience.html">
+<span class="material-symbols-outlined mr-4 text-[18px]">code</span>
+<span class="">experiencia</span>
+</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 flex items-center px-4 py-3 group" href="education.html">
+<span class="material-symbols-outlined mr-4 text-[18px]">school</span>
+<span class="">educación</span>
+</a>
+<a class="font-code-md text-code-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-highest transition-colors cursor-pointer active:opacity-80 flex items-center px-4 py-3 group" href="ia-lab.html">
+<span class="material-symbols-outlined mr-4 text-[18px]">psychology</span>
+<span class="">ia-lab</span>
+</a>
+</div>
+</nav>
+<!-- TopAppBar Component (Mobile Navigation) -->
+<header class="md:hidden flex justify-between items-center w-full px-4 h-14 bg-background dark:bg-background border-b border-border-subtle fixed top-0 left-0 z-50">
+<span class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-primary text-[20px]">DATA_ARCHITECT</span>
+<button class="text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<div class="flex-1 flex flex-col md:ml-[256px] min-h-screen w-full pt-14 md:pt-0 relative z-10">
+<!-- TopAppBar Component (Desktop) -->
+<header class="hidden md:flex justify-between items-center w-full px-gutter h-12 bg-background dark:bg-background border-b border-border-subtle sticky top-0 z-30 transition-all duration-150">
+<div class="flex items-center gap-2">
+<span class="font-code-md text-code-md text-text-muted">~</span>
+<span class="font-code-md text-code-md text-text-muted">/</span>
+<span class="font-code-md text-code-md text-syntax-key">portfolio/root.ts</span>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant transition-all duration-150">
+<button class="hover:text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+</button>
+<button class="hover:text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</button>
+</div>
+</header>
+<!-- Main Editor Area -->
+<main class="flex-1 p-6 md:p-12 lg:p-container-padding flex flex-col gap-12 max-w-5xl mx-auto w-full pb-32">
+<!-- Hero / IDE Introduction -->
+<section class="flex flex-col gap-6 mt-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle w-fit glass-panel">
+<span class="relative flex h-2 w-2">
+<span class="status-ping absolute inline-flex h-full w-full rounded-full bg-accent-ai opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-accent-ai"></span>
+</span>
+<span class="font-code-md text-code-md text-[10px] text-text-muted uppercase tracking-widest">Initialising Workspace...</span>
+</div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-main max-w-3xl leading-tight">
+                Construyendo el puente entre la Arquitectura Web y la <span class="text-primary">Inteligencia Artificial.</span>
+</h1>
+<p class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-border-subtle pl-4 py-1">
+                Ingeniero de datos full-stack e IA especializado en sistemas web robustos e integración de IA. Diseñando infraestructuras escalables para el mañana.
+            </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<button class="bg-primary text-background-dark font-code-md text-code-md px-6 py-3 font-bold hover:bg-primary-fixed transition-colors flex items-center gap-2">
+<span class="">EJECUTAR_PROYECTOS</span>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<button class="bg-transparent border border-border-subtle text-text-main font-code-md text-code-md px-6 py-3 hover:bg-surface-container-highest hover:border-outline transition-all">
+                    VER_CÓDIGO_FUENTE
+                </button>
+</div>
+</section>
+<!-- JSON Skills Block (Code Editor Window) -->
+<section class="mt-8">
+<div class="bg-surface border border-border-subtle flex flex-col shadow-2xl overflow-hidden relative">
+<!-- Subtle gradient glow behind the editor -->
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/10 via-accent-ai/5 to-transparent blur-xl z-0 pointer-events-none"></div>
+<!-- Window Header -->
+<div class="bg-surface-container-low border-b border-border-subtle px-4 py-2 flex items-center gap-4 z-10 bg-opacity-80">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+</div>
+<div class="font-code-md text-code-md text-[12px] text-text-muted flex-1 text-center">
+                        config/developer.json
+                    </div>
+</div>
+<!-- Window Body / Code Content -->
+<div class="p-6 overflow-x-auto z-10 relative">
+<!-- Line Numbers -->
+<div class="absolute left-0 top-0 bottom-0 w-12 bg-surface-container-lowest border-r border-border-subtle py-6 flex flex-col items-end pr-2 font-code-md text-code-md text-text-muted/50 select-none bg-opacity-80">
+<span class="">1</span>
+<span class="">2</span>
+<span class="">3</span>
+<span class="">4</span>
+<span class="">5</span>
+<span class="">6</span>
+<span class="">7</span>
+<span class="">8</span>
+<span class="">9</span>
+<span class="">10</span>
+<span class="">11</span>
+<span class="">12</span>
+<span class="">13</span>
+<span class="">14</span>
+</div>
+<!-- Code -->
+<pre class="font-code-md text-code-md leading-relaxed ml-8"><code class="language-json"><span class="text-syntax-punctuation">{</span>
+  <span class="text-syntax-key">"desarrollador"</span><span class="text-syntax-punctuation">:</span> <span class="text-syntax-punctuation">{</span>
+    <span class="text-syntax-key">"nombre"</span><span class="text-syntax-punctuation">:</span> <span class="text-syntax-string">"Carlos Sánchez Román"</span><span class="text-syntax-punctuation">,</span>
+    <span class="text-syntax-key">"rol"</span><span class="text-syntax-punctuation">:</span> <span class="text-syntax-string">"Full-Stack Data Engineer con IA"</span><span class="text-syntax-punctuation">,</span>
+    <span class="text-syntax-key">"capacidades"</span><span class="text-syntax-punctuation">:</span> <span class="text-syntax-punctuation">[</span>
+      <span class="text-syntax-string">"React/Next.js"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Node.js"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"TypeScript"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Tailwind CSS"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Python"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"IA"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Big Data"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Java / Spring Boot"</span><span class="text-syntax-punctuation">,</span>
+      <span class="text-syntax-string">"Angular"</span>
+    <span class="text-syntax-punctuation">]</span>
+  <span class="text-syntax-punctuation">}</span>
+<span class="text-syntax-punctuation">}</span><span class="text-primary cursor-blink inline-block w-2 h-[1em] align-middle ml-1"></span></code></pre>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="fixed bottom-0 right-0 w-full md:w-[calc(100%-256px)] bg-surface-container-lowest border-t border-border-subtle text-primary font-label-sm text-label-sm flex justify-between items-center px-4 py-1 h-6 z-20">
+<div class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">SISTEMA ONLINE | v2.4.0</div>
+<div class="flex items-center space-x-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">GITHUB</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">LINKEDIN</a>
+</div>
+</footer>
+</div>
+
+
+
+
+
+</body></html>
+
+
+

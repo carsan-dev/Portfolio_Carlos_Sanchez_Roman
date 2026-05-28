@@ -1,0 +1,60 @@
+﻿body {
+            background-color: #0d1510;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(162, 255, 202, 0.05) 0%, transparent 50%),
+                linear-gradient(to right, #151d18 1px, transparent 1px),
+                linear-gradient(to bottom, #151d18 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            color: #dbe5dc;
+        }
+        .git-line {
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: -48px;
+            width: 2px;
+            background-color: #27272A;
+            z-index: 0;
+        }
+        .git-node {
+            z-index: 10;
+            position: relative;
+        }
+        .glass-panel {
+            background: rgba(25, 34, 28, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(162, 255, 202, 0.1);
+        }
+
+body {
+            background-color: #0d1510;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(162, 255, 202, 0.05) 0%, transparent 50%),
+                linear-gradient(to right, #151d18 1px, transparent 1px),
+                linear-gradient(to bottom, #151d18 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            color: #dbe5dc;
+        }
+        .git-line {
+            position: absolute;
+            left: 23px;
+            top: 48px;
+            bottom: -48px;
+            width: 2px;
+            background-color: #27272A;
+            z-index: 0;
+        }
+        .git-node {
+            z-index: 10;
+            position: relative;
+        }
+        .glass-panel {
+            background: rgba(25, 34, 28, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(162, 255, 202, 0.1);
+        }
+
