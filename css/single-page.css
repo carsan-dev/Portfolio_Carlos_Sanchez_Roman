@@ -885,35 +885,25 @@ html {
    Font fix producción
 ================================ */
 
-html,
+.font-body-md,
+.md\:font-body-lg,
+.font-body-lg {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-headline-xl,
+.md\:font-headline-xl,
+.font-headline-lg,
+.md\:font-headline-lg,
+.font-headline-xl-mobile,
+.font-headline-lg-mobile {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.font-code-md {
+  font-family: "JetBrains Mono", monospace;
+}
+
 body {
   font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* Textos normales del portfolio */
-.font-body-lg,
-.font-body-md,
-.text-body-lg,
-.text-code-md {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* Títulos */
-.font-headline-xl,
-.font-headline-lg,
-.font-label-sm {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-/* Terminales, logs y código */
-.font-code-md,
-code,
-pre,
-.terminal-log,
-.preview-topbar,
-.detail-header,
-.detail-kicker,
-.detail-list strong,
-.gallery-card span {
-  font-family: "JetBrains Mono", monospace;
 }
