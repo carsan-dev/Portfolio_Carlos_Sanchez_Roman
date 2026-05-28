@@ -882,28 +882,52 @@ html {
 }
 
 /* ================================
-   Font fix producción
+   Font fix final
 ================================ */
 
+html,
+body,
+.single-page-main,
+.portfolio-section {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+.single-page-main p,
+.single-page-main span,
+.single-page-main a,
+.single-page-main div,
 .font-body-md,
-.md\:font-body-lg,
-.font-body-lg {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.font-body-lg,
+.text-body-md,
+.text-body-lg {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
 .font-headline-xl,
-.md\:font-headline-xl,
 .font-headline-lg,
-.md\:font-headline-lg,
 .font-headline-xl-mobile,
-.font-headline-lg-mobile {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.font-headline-lg-mobile,
+.single-page-main h1,
+.single-page-main h2,
+.single-page-main h3,
+.single-page-main h4 {
+  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
 }
 
-.font-code-md {
-  font-family: "JetBrains Mono", monospace;
+.font-code-md,
+.font-code-md *,
+pre,
+code,
+.terminal-log,
+.terminal-log *,
+.detail-header,
+.detail-kicker,
+.detail-list strong,
+.preview-topbar,
+.gallery-card span {
+  font-family: "JetBrains Mono", monospace !important;
 }
 
-body {
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+.material-symbols-outlined {
+  font-family: "Material Symbols Outlined" !important;
 }
