@@ -108,23 +108,106 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((section) => section.classList.add("section-motion-visible"));
   }
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    document.querySelectorAll("model-viewer[autoplay]").forEach((viewer) => {
-      viewer.removeAttribute("autoplay");
-    });
-  }
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let modelViewerScriptPromise;
+  const loadModelViewerScript = () => {
+    if (customElements.get("model-viewer")) return Promise.resolve();
+    if (modelViewerScriptPromise) return modelViewerScriptPromise;
 
-  document.querySelectorAll("model-viewer").forEach((viewer) => {
-    const fallback = viewer.querySelector(".hero-model-fallback");
-    viewer.addEventListener("load", () => {
-      viewer.classList.add("is-loaded");
-    }, { once: true });
-    viewer.addEventListener("error", () => {
-      viewer.classList.add("has-error");
-      if (fallback) {
-        fallback.textContent = "No se pudo cargar el modelo 3D";
+    modelViewerScriptPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.type = "module";
+      script.src = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js";
+      script.addEventListener("load", resolve, { once: true });
+      script.addEventListener("error", reject, { once: true });
+      document.head.appendChild(script);
+    });
+
+    return modelViewerScriptPromise;
+  };
+
+  const mountHeroModel = (stage) => {
+    if (!stage || stage.dataset.modelMounted === "true") return;
+
+    const status = stage.querySelector("[data-model-status]");
+    stage.dataset.modelMounted = "true";
+    stage.classList.add("is-loading");
+    if (status) {
+      status.textContent = "Cargando modelo 3D";
+    }
+
+    loadModelViewerScript()
+      .then(() => {
+        const viewer = document.createElement("model-viewer");
+        viewer.setAttribute("src", stage.dataset.modelSrc || "");
+        viewer.setAttribute("alt", stage.dataset.modelAlt || "Modelo 3D");
+        viewer.setAttribute("camera-controls", "");
+        viewer.setAttribute("animation-name", "Scene");
+        viewer.setAttribute("camera-orbit", "35deg 68deg 105%");
+        viewer.setAttribute("field-of-view", "34deg");
+        viewer.setAttribute("interaction-prompt", "none");
+        viewer.setAttribute("loading", "lazy");
+        viewer.setAttribute("reveal", "auto");
+        viewer.setAttribute("shadow-intensity", "0.55");
+        viewer.setAttribute("exposure", "0.95");
+        viewer.setAttribute("environment-image", "neutral");
+        if (!prefersReducedMotion) {
+          viewer.setAttribute("autoplay", "");
+        }
+
+        const showLoadedModel = () => {
+          stage.classList.remove("is-loading");
+          stage.classList.add("is-model-active");
+          viewer.classList.add("is-loaded");
+          if (status) {
+            status.textContent = "Modelo 3D activo";
+          }
+        };
+
+        viewer.addEventListener("model-visibility", (event) => {
+          if (event.detail.visible) {
+            showLoadedModel();
+          }
+        });
+
+        viewer.addEventListener("load", () => {
+          window.setTimeout(() => {
+            if (!viewer.classList.contains("is-loaded")) {
+              showLoadedModel();
+            }
+          }, 350);
+        }, { once: true });
+
+        viewer.addEventListener("error", () => {
+          stage.classList.remove("is-loading");
+          stage.dataset.modelMounted = "false";
+          if (status) {
+            status.textContent = "No se pudo cargar el modelo 3D";
+          }
+        }, { once: true });
+
+        stage.appendChild(viewer);
+      })
+      .catch(() => {
+        stage.classList.remove("is-loading");
+        stage.dataset.modelMounted = "false";
+        if (status) {
+          status.textContent = "No se pudo cargar el visor 3D";
+        }
+      });
+  };
+
+  document.querySelectorAll("[data-model-stage]").forEach((stage) => {
+    stage.querySelector("[data-load-model]")?.addEventListener("click", () => mountHeroModel(stage));
+
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      const scheduleMount = () => mountHeroModel(stage);
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(scheduleMount, { timeout: 2200 });
+      } else {
+        window.setTimeout(scheduleMount, 1200);
       }
-    }, { once: true });
+    }
   });
 
   document.querySelectorAll("[data-line-numbers-for]").forEach((gutter) => {

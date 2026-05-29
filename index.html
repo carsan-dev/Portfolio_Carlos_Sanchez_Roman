@@ -17,8 +17,6 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet">
-  <script type="module"
-    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="css/index.css?v=20260528-2">
   <link rel="stylesheet" href="css/projects.css?v=20260528-2">
   <link rel="stylesheet" href="css/experience.css?v=20260528-2">
@@ -104,7 +102,7 @@
     <main class="single-page-main flex-1 w-full pb-32">
       <section id="root" class="portfolio-section root-section">
         <!-- Hero / IDE Introduction -->
-        <section class="hero-intro mt-8">
+        <section class="hero-intro">
           <div class="hero-copy">
             <div
               class="workspace-status inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle w-fit glass-panel"
@@ -139,21 +137,16 @@
             </div>
           </div>
           <div class="hero-model" aria-label="Modelo 3D de robot autónomo">
-            <model-viewer src="assets/projects/autonomous_robot_sweeper.glb"
-              alt="Modelo 3D de robot barredora autónomo"
-              camera-controls
-              autoplay
-              animation-name="Scene"
-              camera-orbit="35deg 68deg 105%"
-              field-of-view="34deg"
-              interaction-prompt="none"
-              loading="lazy"
-              reveal="auto"
-              shadow-intensity="0.55"
-              exposure="0.95"
-              environment-image="neutral">
-              <div class="hero-model-fallback" slot="poster">Cargando modelo 3D...</div>
-            </model-viewer>
+            <div class="hero-model-stage" data-model-stage data-model-src="assets/projects/autonomous_robot_sweeper.glb"
+              data-model-alt="Modelo 3D de robot barredora autónomo" aria-live="polite">
+              <img class="hero-model-poster" src="assets/projects/robot-poster.webp"
+                alt="Ilustración del robot barredora autónomo">
+              <button class="hero-model-load" type="button" data-load-model>
+                <span class="material-symbols-outlined" aria-hidden="true">view_in_ar</span>
+                VER_3D
+              </button>
+              <p class="hero-model-status" data-model-status>Carga 3D bajo demanda</p>
+            </div>
           </div>
           <p class="model-attribution">
             3D asset:
@@ -372,16 +365,16 @@
                     href="https://github.com/carsan-dev/exom-api" target="_blank"
                     rel="noopener noreferrer">API</a></span></div>
               <div class="project-gallery mixed-gallery">
-                <figure class="project-shot landscape-shot" data-placeholder="assets/projects/dashboard_admin_exom.png">
-                  <img src="assets/projects/dashboard_admin_exom.png" alt="Pantalla principal de EXOM"
+                <figure class="project-shot landscape-shot" data-placeholder="assets/projects/dashboard_admin_exom.webp">
+                  <img src="assets/projects/dashboard_admin_exom.webp" alt="Pantalla principal de EXOM"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot portrait-shot" data-placeholder="assets/projects/inicio_exom.jpeg">
-                  <img src="assets/projects/inicio_exom.jpeg" alt="Entrenamientos en EXOM"
+                <figure class="project-shot portrait-shot" data-placeholder="assets/projects/inicio_exom.webp">
+                  <img src="assets/projects/inicio_exom.webp" alt="Entrenamientos en EXOM"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot portrait-shot" data-placeholder="assets/projects/perfil_exom.jpeg">
-                  <img src="assets/projects/perfil_exom.jpeg" alt="Dietas en EXOM"
+                <figure class="project-shot portrait-shot" data-placeholder="assets/projects/perfil_exom.webp">
+                  <img src="assets/projects/perfil_exom.webp" alt="Dietas en EXOM"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
               </div>
@@ -407,16 +400,16 @@
                   href="https://github.com/carsan-dev/proyecto_taemoi_csr/tree/main" target="_blank"
                   rel="noopener noreferrer">ABRIR_REPO</a></div>
               <div class="project-gallery taemoi-gallery">
-                <figure class="project-shot main-shot" data-placeholder="assets/projects/dashboard_taemoi.png">
-                  <img src="assets/projects/dashboard_taemoi.png" alt="Dashboard de Taemoi"
+                <figure class="project-shot main-shot" data-placeholder="assets/projects/dashboard_taemoi.webp">
+                  <img src="assets/projects/dashboard_taemoi.webp" alt="Dashboard de Taemoi"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot" data-placeholder="assets/projects/alumnos_taemoi.png">
-                  <img src="assets/projects/alumnos_taemoi.png" alt="Gestión de alumnos de Taemoi"
+                <figure class="project-shot" data-placeholder="assets/projects/alumnos_taemoi.webp">
+                  <img src="assets/projects/alumnos_taemoi.webp" alt="Gestión de alumnos de Taemoi"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot" data-placeholder="assets/projects/landpage_taemoi.png">
-                  <img src="assets/projects/landpage_taemoi.png" alt="Landing de Taemoi"
+                <figure class="project-shot" data-placeholder="assets/projects/landpage_taemoi.webp">
+                  <img src="assets/projects/landpage_taemoi.webp" alt="Landing de Taemoi"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
               </div>
@@ -442,16 +435,16 @@
                   href="http://github.com/carsan-dev/EasyBill" target="_blank" rel="noopener noreferrer">ABRIR_REPO</a>
               </div>
               <div class="project-gallery easybill-gallery">
-                <figure class="project-shot easybill-screen" data-placeholder="assets/projects/easybill_factura.png">
-                  <img src="assets/projects/easybill_factura.png" alt="Pantalla de factura en EasyBill"
+                <figure class="project-shot easybill-screen" data-placeholder="assets/projects/easybill_factura.webp">
+                  <img src="assets/projects/easybill_factura.webp" alt="Pantalla de factura en EasyBill"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot document-shot" data-placeholder="assets/projects/easybill_presupuesto.png">
-                  <img src="assets/projects/easybill_presupuesto.png" alt="Presupuesto en EasyBill"
+                <figure class="project-shot document-shot" data-placeholder="assets/projects/easybill_presupuesto.webp">
+                  <img src="assets/projects/easybill_presupuesto.webp" alt="Presupuesto en EasyBill"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
-                <figure class="project-shot easybill-screen" data-placeholder="assets/projects/easybill_clientes.png">
-                  <img src="assets/projects/easybill_clientes.png" alt="Registro de alumnos en EasyBill"
+                <figure class="project-shot easybill-screen" data-placeholder="assets/projects/easybill_clientes.webp">
+                  <img src="assets/projects/easybill_clientes.webp" alt="Registro de alumnos en EasyBill"
                     onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
                 </figure>
               </div>
@@ -488,8 +481,8 @@
 
           <div class="gallery-grid">
             <a class="gallery-card" href="#project-exom">
-              <figure data-placeholder="assets/projects/resumen_exom.jpeg">
-                <img src="assets/projects/resumen_exom.jpeg" alt="Captura principal de EXOM"
+              <figure data-placeholder="assets/projects/resumen_exom.webp">
+                <img src="assets/projects/resumen_exom.webp" alt="Captura principal de EXOM"
                   onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
               </figure>
               <div><span>01 / Flutter + NestJS + React</span><strong>EXOM</strong>
@@ -497,8 +490,8 @@
               </div>
             </a>
             <a class="gallery-card" href="#project-taemoi">
-              <figure data-placeholder="assets/projects/cartelera_taemoi.png">
-                <img src="assets/projects/cartelera_taemoi.png" alt="Captura principal de Taemoi"
+              <figure data-placeholder="assets/projects/cartelera_taemoi.webp">
+                <img src="assets/projects/cartelera_taemoi.webp" alt="Captura principal de Taemoi"
                   onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
               </figure>
               <div><span>02 / Spring Boot + Angular</span><strong>Taemoi</strong>
@@ -506,8 +499,8 @@
               </div>
             </a>
             <a class="gallery-card" href="#project-easybill">
-              <figure data-placeholder="assets/projects/easybill_factura.png">
-                <img src="assets/projects/easybill_factura.png" alt="Captura principal de EasyBill"
+              <figure data-placeholder="assets/projects/easybill_factura.webp">
+                <img src="assets/projects/easybill_factura.webp" alt="Captura principal de EasyBill"
                   onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
               </figure>
               <div><span>03 / Python + SQLite</span><strong>EasyBill</strong>
@@ -516,8 +509,8 @@
             </a>
             <a class="gallery-card" href="https://github.com/carsan-dev/ManagerApp" target="_blank"
               rel="noopener noreferrer">
-              <figure data-placeholder="assets/projects/managerapp_home.jpeg">
-                <img src="assets/projects/managerapp_home.jpeg" alt="Captura principal de ManagerApp"
+              <figure data-placeholder="assets/projects/managerapp_home.webp">
+                <img src="assets/projects/managerapp_home.webp" alt="Captura principal de ManagerApp"
                   onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
               </figure>
               <div><span>04 / React Native</span><strong>ManagerApp</strong>
@@ -526,8 +519,8 @@
             </a>
             <a class="gallery-card" href="https://github.com/carsan-dev/HunterAriseRegister" target="_blank"
               rel="noopener noreferrer">
-              <figure data-placeholder="assets/projects/hunterarise_dashboard.png">
-                <img src="assets/projects/hunterarise_dashboard.png" alt="Captura principal de Hunter Arise Register"
+              <figure data-placeholder="assets/projects/hunterarise_dashboard.webp">
+                <img src="assets/projects/hunterarise_dashboard.webp" alt="Captura principal de Hunter Arise Register"
                   onerror="this.closest('figure').classList.add('is-missing'); this.remove();">
               </figure>
               <div><span>05 / Python + Streamlit + Supabase</span><strong>Hunter Arise Register</strong>

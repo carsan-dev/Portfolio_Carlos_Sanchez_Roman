@@ -25,6 +25,11 @@ html {
   padding-bottom: 4rem;
 }
 
+.root-section {
+  min-height: auto;
+  padding-top: 1.25rem;
+}
+
 .hero-intro {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.88fr);
@@ -41,7 +46,7 @@ html {
 
 .hero-model {
   position: relative;
-  min-height: 420px;
+  min-height: 380px;
   display: grid;
   align-content: center;
   align-self: center;
@@ -62,12 +67,94 @@ html {
   z-index: -1;
 }
 
+.hero-model-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(320px, 38vw, 500px);
+  padding-bottom: 4.75rem;
+}
+
+.hero-model-poster {
+  width: min(100%, 620px);
+  height: auto;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.42));
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.hero-model-load {
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(162, 255, 202, 0.45);
+  background: rgba(10, 10, 12, 0.78);
+  color: #a2ffca;
+  padding: 0.75rem 1rem;
+  font: 700 12px/1 "JetBrains Mono", monospace;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 24px rgba(162, 255, 202, 0.12);
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.hero-model-load:hover,
+.hero-model-load:focus-visible {
+  border-color: #a2ffca;
+  background: rgba(162, 255, 202, 0.12);
+  outline: none;
+}
+
+.hero-model-load .material-symbols-outlined {
+  font-size: 18px;
+}
+
+.hero-model-status {
+  position: absolute;
+  left: 50%;
+  bottom: 1.45rem;
+  transform: translateX(-50%);
+  color: #849589;
+  font: 10px/1.4 "JetBrains Mono", monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-model-stage.is-loading .hero-model-load {
+  pointer-events: none;
+  color: #71717A;
+  border-color: rgba(113, 113, 122, 0.4);
+}
+
+.hero-model-stage.is-model-active .hero-model-poster,
+.hero-model-stage.is-model-active .hero-model-load,
+.hero-model-stage.is-model-active .hero-model-status {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-model-stage.is-loading .hero-model-poster {
+  opacity: 1;
+}
+
 .hero-model model-viewer {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: clamp(340px, 46vw, 580px);
+  height: 100%;
   --poster-color: transparent;
   background: transparent;
   filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.42));
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 220ms ease;
+}
+
+.hero-model-stage.is-model-active model-viewer.is-loaded {
+  opacity: 1;
+  visibility: visible;
 }
 
 .hero-model-fallback {
@@ -109,8 +196,9 @@ html {
   font: 10px/1.45 "JetBrains Mono", monospace;
   grid-column: 1 / -1;
   justify-self: end;
-  margin-top: -1.1rem;
-  opacity: 0.72;
+  margin-top: -2.2rem;
+  margin-right: 0.25rem;
+  opacity: 0.55;
 }
 
 .model-attribution a {
@@ -218,12 +306,22 @@ html {
   }
 
   .hero-model {
-    min-height: 260px;
+    min-height: 360px;
     transform: none;
   }
 
+  .hero-model-stage {
+    min-height: 360px;
+    padding-bottom: 4.75rem;
+  }
+
+  .hero-model-poster {
+    width: min(100%, 300px);
+    align-self: start;
+  }
+
   .hero-model model-viewer {
-    height: 300px;
+    height: 360px;
   }
 
   .model-attribution {
