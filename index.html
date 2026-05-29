@@ -921,8 +921,8 @@
                 <div class="dot dot-green"></div>
                 <span class="ml-4 font-code-md text-xs text-text-muted">deep_learning_vision.py</span>
               </div>
-              <div class="p-6 flex flex-col md:flex-row gap-8 items-center h-full relative z-10">
-                <div class="flex-1 space-y-4">
+              <div class="vision-card-body p-6 h-full relative z-10">
+                <div class="vision-card-copy space-y-4">
                   <div class="inline-flex items-center gap-2 text-accent-ai mb-2">
                     <span class="material-symbols-outlined">visibility</span>
                     <h3 class="font-code-md text-code-md font-bold uppercase tracking-wider">Visión por Computador</h3>
@@ -941,17 +941,30 @@
                     <span class="font-code-md text-syntax-string text-sm">tensorflow import keras</span>
                   </div>
                 </div>
-                <div
-                  class="w-full md:w-1/2 h-64 rounded bg-surface-container border border-border-subtle relative overflow-hidden flex items-center justify-center">
-                  <img alt="Representación visual de redes neuronales"
-                    class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-luminosity"
-                    data-alt="A highly technical visualization of a deep learning neural network. Thin, glowing cyan and magenta lines connect nodes in a complex 3D web structure, superimposed over a dark, blurred background of server racks. The aesthetic is Brutalist-Minimalism mixed with Cyberpunk, featuring deep blacks and intense neon highlights. The image feels analytical, precise, and advanced."
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEhV0mX02RNGUlDoCtd0lR7hjZWYOuoTWE-f9wZwyVOxrhI4W_NDJO3vmKkatJyLo5LaE2680r3yqtM_q3R2hpkQoR4laaixyjqHau-7EzZyr4mbyIh5rZYJ4IJ0CYU5-SlDPB19BTWz9Ax_zaT-hFz5f7680Qk5J6x4Lb-JClRDf7Au8aruApMkCKnLv5qph9-464ZI0SCwnKLeye-wcr_NP0YjkT1zu0hZCKOTfUV7AunoEhjlS-8ZuA3M5nKbXTW-Mol1SkQi0-">
-                  <div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent opacity-80"></div>
-                  <div class="z-10 text-center space-y-2">
-                    <span class="material-symbols-outlined text-4xl text-primary/50 block">center_focus_strong</span>
-                    <span class="font-code-md text-xs text-primary tracking-widest uppercase">Processing_Vision</span>
+                <div class="vision-scan" aria-label="Red convolucional recreando una imagen con patrones simples">
+                  <div class="vision-cnn-stage vision-cnn-input" aria-hidden="true">
+                    <span class="house-sky"></span>
+                    <span class="house-roof"></span>
+                    <span class="house-body"></span>
+                    <span class="house-door"></span>
+                    <span class="house-window window-a"></span>
+                    <span class="house-window window-b"></span>
+                    <div class="vision-kernel" aria-hidden="true"></div>
                   </div>
+                  <div class="vision-cnn-stage vision-cnn-feature feature-a" aria-hidden="true"></div>
+                  <div class="vision-cnn-stage vision-cnn-feature feature-b" aria-hidden="true"></div>
+                  <div class="vision-cnn-stage vision-cnn-feature feature-c" aria-hidden="true"></div>
+                  <div class="vision-cnn-stage vision-cnn-output" aria-hidden="true">
+                    <i class="rebuild-line line-a"></i>
+                    <i class="rebuild-line line-b"></i>
+                    <i class="rebuild-line line-c"></i>
+                    <i class="rebuild-shape shape-a"></i>
+                    <i class="rebuild-shape shape-b"></i>
+                    <i class="rebuild-shape shape-c"></i>
+                  </div>
+                  <div class="vision-cnn-label label-input">INPUT_IMAGE</div>
+                  <div class="vision-cnn-label label-kernel">FEATURE_MAPS</div>
+                  <div class="vision-cnn-label label-output">RECONSTRUCTED_PATTERN</div>
                 </div>
               </div>
             </div>
