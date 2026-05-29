@@ -69,6 +69,15 @@ document.addEventListener("DOMContentLoaded", () => {
     item.style.setProperty("--motion-delay", `${Math.min(index % 6, 5) * 70}ms`);
   });
 
+  const isInitiallyVisible = (item) => {
+    const rect = item.getBoundingClientRect();
+    return rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+  };
+
+  revealItems.filter(isInitiallyVisible).forEach((item) => {
+    item.classList.add("motion-visible");
+  });
+
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -78,7 +87,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
 
-    revealItems.forEach((item) => revealObserver.observe(item));
+    revealItems
+      .filter((item) => !item.classList.contains("motion-visible"))
+      .forEach((item) => revealObserver.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add("motion-visible"));
   }

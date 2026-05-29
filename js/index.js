@@ -8,5 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener(eventName, closeBootOverlay, { once: true, passive: true });
   });
 
+  const workspaceStatus = document.getElementById("workspace-status");
+  const workspaceStatusText = workspaceStatus?.querySelector(".workspace-status-text");
+  window.setTimeout(() => {
+    workspaceStatus?.classList.add("is-ready");
+    if (workspaceStatusText) {
+      workspaceStatusText.textContent = "WORKSPACE INITIALIZED!";
+    }
+  }, 3000);
+
   console.log("Workspace Initialized. Welcome, Architect.");
 });

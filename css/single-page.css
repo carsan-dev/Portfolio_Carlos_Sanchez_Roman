@@ -80,6 +80,30 @@ html {
   letter-spacing: 0.08em;
 }
 
+.workspace-status {
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.workspace-status .status-dot,
+.workspace-status .status-ping,
+.workspace-status .workspace-status-text {
+  transition: background-color 180ms ease, color 180ms ease, opacity 180ms ease;
+}
+
+.workspace-status.is-ready {
+  border-color: rgba(162, 255, 202, 0.35);
+  background: rgba(162, 255, 202, 0.06);
+}
+
+.workspace-status.is-ready .status-dot,
+.workspace-status.is-ready .status-ping {
+  background: #a2ffca;
+}
+
+.workspace-status.is-ready .workspace-status-text {
+  color: #a2ffca;
+}
+
 .model-attribution {
   color: #849589;
   font: 10px/1.45 "JetBrains Mono", monospace;
