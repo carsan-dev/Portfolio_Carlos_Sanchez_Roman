@@ -25,6 +25,82 @@ html {
   padding-bottom: 4rem;
 }
 
+.hero-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.88fr);
+  gap: clamp(1.5rem, 3.5vw, 3.75rem);
+  align-items: center;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0;
+}
+
+.hero-model {
+  position: relative;
+  min-height: 420px;
+  display: grid;
+  align-content: center;
+  align-self: center;
+  isolation: isolate;
+  transform: translateX(-1.5rem);
+}
+
+.hero-model::before {
+  content: "";
+  position: absolute;
+  inset: 12% 2% 18%;
+  border: 1px solid rgba(162, 255, 202, 0.08);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(162, 255, 202, 0.16), transparent 42%),
+    radial-gradient(circle at 70% 20%, rgba(138, 43, 226, 0.18), transparent 38%);
+  filter: blur(18px);
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.hero-model model-viewer {
+  width: 100%;
+  height: clamp(340px, 46vw, 580px);
+  --poster-color: transparent;
+  background: transparent;
+  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.42));
+}
+
+.hero-model-fallback {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #71717A;
+  font: 12px/1.4 "JetBrains Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.model-attribution {
+  color: #849589;
+  font: 10px/1.45 "JetBrains Mono", monospace;
+  grid-column: 1 / -1;
+  justify-self: end;
+  margin-top: -1.1rem;
+  opacity: 0.72;
+}
+
+.model-attribution a {
+  color: #bacbbe;
+  text-decoration: underline;
+  text-decoration-color: rgba(162, 255, 202, 0.35);
+  text-underline-offset: 0.18em;
+}
+
+.model-attribution a:hover,
+.model-attribution a:focus-visible {
+  color: #a2ffca;
+}
+
 .nav-link.is-active {
   color: #dbe5dc;
   background: rgba(162, 255, 202, 0.05);
@@ -33,6 +109,36 @@ html {
 
 .nav-link:not(.is-active) {
   border-left-color: transparent;
+}
+
+.route-flash {
+  animation: routeFlash 180ms ease-out;
+}
+
+.motion-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.motion-reveal.motion-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 520ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--motion-delay, 0ms);
+}
+
+@keyframes routeFlash {
+  0% {
+    color: #a2ffca;
+    text-shadow: 0 0 10px rgba(162, 255, 202, 0.55);
+  }
+
+  100% {
+    color: #13ec9c;
+    text-shadow: none;
+  }
 }
 
 .ia-lab-section {
@@ -51,6 +157,7 @@ html {
   background: rgba(138, 43, 226, 0.18);
   filter: blur(120px);
   pointer-events: none;
+  animation: aiGlowDrift 18s ease-in-out infinite alternate;
 }
 
 .section-title-cursor {
@@ -79,6 +186,25 @@ html {
   .portfolio-section {
     padding: 1.25rem;
     scroll-margin-top: 4rem;
+  }
+
+  .hero-intro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .hero-model {
+    min-height: 260px;
+    transform: none;
+  }
+
+  .hero-model model-viewer {
+    height: 300px;
+  }
+
+  .model-attribution {
+    justify-self: start;
+    margin-top: -0.5rem;
   }
 }
 
@@ -109,6 +235,21 @@ html {
     linear-gradient(to bottom, rgba(162, 255, 202, 0.06) 1px, transparent 1px);
   background-size: 18px 18px;
   opacity: 0.7;
+}
+
+.project-preview::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(162, 255, 202, 0.16), transparent);
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.group:hover .project-preview::after {
+  animation: previewScan 900ms ease-out;
 }
 
 .preview-frame,
@@ -233,22 +374,28 @@ html {
 .preview-chart span {
   width: 1rem;
   background: linear-gradient(to top, #13ec9c, rgba(19, 236, 156, 0.2));
+  transform-origin: bottom;
+  animation: chartPulse 4.8s ease-in-out infinite;
 }
 
 .preview-chart span:nth-child(1) {
   height: 42%;
+  animation-delay: 0ms;
 }
 
 .preview-chart span:nth-child(2) {
   height: 70%;
+  animation-delay: 320ms;
 }
 
 .preview-chart span:nth-child(3) {
   height: 54%;
+  animation-delay: 640ms;
 }
 
 .preview-chart span:nth-child(4) {
   height: 88%;
+  animation-delay: 960ms;
 }
 
 .preview-table {
@@ -261,6 +408,7 @@ html {
 .invoice-lines i,
 .mobile-list i {
   height: 0.45rem;
+  animation: lineActivity 4.4s ease-in-out infinite;
 }
 
 .invoice-preview {
@@ -296,14 +444,17 @@ html {
 
 .invoice-lines i:nth-child(2) {
   width: 82%;
+  animation-delay: 180ms;
 }
 
 .invoice-lines i:nth-child(3) {
   width: 68%;
+  animation-delay: 360ms;
 }
 
 .invoice-lines i:nth-child(4) {
   width: 91%;
+  animation-delay: 540ms;
 }
 
 .invoice-total {
@@ -357,6 +508,19 @@ html {
   height: 1.1rem;
   border: 1px solid rgba(255, 198, 97, 0.12);
   background: rgba(255, 198, 97, 0.08);
+  animation-name: mobileListPulse;
+}
+
+.mobile-list i:nth-child(2) {
+  animation-delay: 220ms;
+}
+
+.mobile-list i:nth-child(3) {
+  animation-delay: 440ms;
+}
+
+.mobile-list i:nth-child(4) {
+  animation-delay: 660ms;
 }
 
 .mobile-nav {
@@ -691,6 +855,20 @@ html {
     #0A0A0C;
 }
 
+.gallery-card figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(to bottom, rgba(162, 255, 202, 0.1), transparent 28%),
+    linear-gradient(to right, transparent, rgba(162, 255, 202, 0.08), transparent);
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
 .gallery-card img {
   width: 100%;
   height: 100%;
@@ -703,6 +881,12 @@ html {
 
 .gallery-card:hover img {
   transform: scale(1.025);
+}
+
+.gallery-card:hover figure::after,
+.gallery-card:focus-visible figure::after {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-card figure.is-missing::before {
@@ -929,6 +1113,188 @@ code,
 .preview-topbar,
 .gallery-card span {
   font-family: "JetBrains Mono", monospace !important;
+}
+
+.experience-section .git-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-section.section-motion-visible .git-line {
+  transform: scaleY(1);
+}
+
+.experience-section .git-node {
+  overflow: visible;
+}
+
+.experience-section .git-node::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem;
+  border: 1px solid rgba(162, 255, 202, 0.35);
+  border-radius: 9999px;
+  opacity: 0;
+  transform: scale(0.72);
+  pointer-events: none;
+}
+
+.experience-section.section-motion-visible .git-node::after {
+  animation: gitNodePing 820ms ease-out both;
+}
+
+.experience-section.section-motion-visible .relative.group:nth-child(2) .git-node::after {
+  animation-delay: 120ms;
+}
+
+.experience-section.section-motion-visible .relative.group:nth-child(3) .git-node::after {
+  animation-delay: 240ms;
+}
+
+.experience-section.section-motion-visible .relative.group:nth-child(4) .git-node::after {
+  animation-delay: 360ms;
+}
+
+.contact-section a[href^="mailto"],
+.contact-section a[href*="github"] {
+  position: relative;
+  isolation: isolate;
+}
+
+.contact-section a[href^="mailto"]::after,
+.contact-section a[href*="github"]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(162, 255, 202, 0.35);
+  opacity: 0;
+  transform: scaleX(0.96);
+  transition: opacity 160ms ease, transform 160ms ease;
+  pointer-events: none;
+}
+
+.contact-section a[href^="mailto"]:hover::after,
+.contact-section a[href*="github"]:hover::after,
+.contact-section a[href^="mailto"]:focus-visible::after,
+.contact-section a[href*="github"]:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+@keyframes previewScan {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  20%,
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes chartPulse {
+  0%,
+  100% {
+    transform: scaleY(0.86);
+    opacity: 0.68;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lineActivity {
+  0%,
+  100% {
+    transform: scaleX(0.7);
+    transform-origin: left;
+    opacity: 0.55;
+  }
+
+  45%,
+  70% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes mobileListPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.58;
+  }
+
+  50% {
+    transform: translateY(-2px);
+    opacity: 1;
+  }
+}
+
+@keyframes gitNodePing {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.72);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+@keyframes aiGlowDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-7%, 5%, 0) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-reveal,
+  .motion-reveal.motion-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .route-flash,
+  .ia-lab-section::before,
+  .preview-chart span,
+  .preview-table i,
+  .invoice-lines i,
+  .mobile-list i,
+  .experience-section.section-motion-visible .git-node::after,
+  .section-title-cursor {
+    animation: none;
+  }
+
+  .experience-section .git-line {
+    transform: none;
+    transition: none;
+  }
+
+  .project-preview::after,
+  .gallery-card figure::after {
+    display: none;
+  }
 }
 
 /* ================================

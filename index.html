@@ -14,6 +14,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet">
+  <script type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
   <link rel="stylesheet" href="css/index.css?v=20260528-2">
   <link rel="stylesheet" href="css/projects.css?v=20260528-2">
   <link rel="stylesheet" href="css/experience.css?v=20260528-2">
@@ -99,37 +101,63 @@
     <main class="single-page-main flex-1 w-full pb-32">
       <section id="root" class="portfolio-section root-section">
         <!-- Hero / IDE Introduction -->
-        <section class="flex flex-col gap-6 mt-8">
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle w-fit glass-panel">
-            <span class="relative flex h-2 w-2">
-              <span class="status-ping absolute inline-flex h-full w-full rounded-full bg-accent-ai opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-ai"></span>
-            </span>
-            <span class="font-code-md text-code-md text-[10px] text-text-muted uppercase tracking-widest">Initialising
-              Workspace...</span>
+        <section class="hero-intro mt-8">
+          <div class="hero-copy">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle w-fit glass-panel">
+              <span class="relative flex h-2 w-2">
+                <span class="status-ping absolute inline-flex h-full w-full rounded-full bg-accent-ai opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-ai"></span>
+              </span>
+              <span class="font-code-md text-code-md text-[10px] text-text-muted uppercase tracking-widest">Initialising
+                Workspace...</span>
+            </div>
+            <h1
+              class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-main max-w-3xl leading-tight">
+              Construyendo el puente entre la Arquitectura Web y la <span class="text-primary">Inteligencia
+                Artificial.</span>
+            </h1>
+            <p
+              class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-border-subtle pl-4 py-1">
+              Desarrollador full-stack e IA especializado en sistemas web robustos e integración de IA. Diseñando
+              infraestructuras escalables para el mañana.
+            </p>
+            <div class="flex flex-wrap gap-4 mt-4">
+              <a class="bg-primary text-background-dark font-code-md text-code-md px-6 py-3 font-bold hover:bg-primary-fixed transition-colors flex items-center gap-2"
+                href="#projects">
+                <span class="">EJECUTAR_PROYECTOS</span>
+                <span class="material-symbols-outlined text-[18px]">play_arrow</span>
+              </a>
+              <a class="bg-transparent border border-border-subtle text-text-main font-code-md text-code-md px-6 py-3 hover:bg-surface-container-highest hover:border-outline transition-all"
+                href="https://github.com/carsan-dev" target="_blank" rel="noopener noreferrer">
+                VER_CÓDIGO_FUENTE
+              </a>
+            </div>
           </div>
-          <h1
-            class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-text-main max-w-3xl leading-tight">
-            Construyendo el puente entre la Arquitectura Web y la <span class="text-primary">Inteligencia
-              Artificial.</span>
-          </h1>
-          <p
-            class="font-body-md md:font-body-lg text-body-md md:text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-border-subtle pl-4 py-1">
-            Desarrollador full-stack e IA especializado en sistemas web robustos e integración de IA. Diseñando
-            infraestructuras escalables para el mañana.
+          <div class="hero-model" aria-label="Modelo 3D de robot autónomo">
+            <model-viewer src="assets/projects/autonomous_robot_sweeper.glb"
+              alt="Modelo 3D de robot barredora autónomo"
+              camera-controls
+              autoplay
+              animation-name="Scene"
+              camera-orbit="35deg 68deg 105%"
+              field-of-view="34deg"
+              interaction-prompt="none"
+              loading="lazy"
+              reveal="auto"
+              shadow-intensity="0.55"
+              exposure="0.95"
+              environment-image="neutral">
+              <div class="hero-model-fallback" slot="poster">Cargando modelo 3D...</div>
+            </model-viewer>
+          </div>
+          <p class="model-attribution">
+            3D asset:
+            <a href="https://skfb.ly/oRzLN" target="_blank" rel="noopener noreferrer">Autonomous Robot Sweeper</a>
+            by Zeps3D ·
+            <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY
+              4.0</a>
           </p>
-          <div class="flex flex-wrap gap-4 mt-4">
-            <a class="bg-primary text-background-dark font-code-md text-code-md px-6 py-3 font-bold hover:bg-primary-fixed transition-colors flex items-center gap-2"
-              href="#projects">
-              <span class="">EJECUTAR_PROYECTOS</span>
-              <span class="material-symbols-outlined text-[18px]">play_arrow</span>
-            </a>
-            <a class="bg-transparent border border-border-subtle text-text-main font-code-md text-code-md px-6 py-3 hover:bg-surface-container-highest hover:border-outline transition-all"
-              href="https://github.com/carsan-dev" target="_blank" rel="noopener noreferrer">
-              VER_CÓDIGO_FUENTE
-            </a>
-          </div>
         </section>
         <!-- JSON Skills Block (Code Editor Window) -->
         <section class="mt-8">

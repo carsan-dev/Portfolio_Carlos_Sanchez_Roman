@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     contact: "portfolio/contacto.json",
   };
 
+  let activeRoute = currentRoute?.textContent || "";
+
   const setActive = (id) => {
     links.forEach((link) => {
       const isActive = link.getAttribute("href") === `#${id}`;
@@ -21,8 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.toggle("text-on-surface-variant", !isActive);
     });
 
-    if (currentRoute && routeById[id]) {
+    if (currentRoute && routeById[id] && activeRoute !== routeById[id]) {
       currentRoute.textContent = routeById[id];
+      activeRoute = routeById[id];
+      currentRoute.classList.remove("route-flash");
+      void currentRoute.offsetWidth;
+      currentRoute.classList.add("route-flash");
     }
   };
 
@@ -46,6 +52,69 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
   window.addEventListener("resize", updateActiveFromScroll);
   updateActiveFromScroll();
+
+  const motionTargets = [
+    ".root-section > section",
+    ".projects-section .glass-panel",
+    ".gallery-card",
+    ".experience-section .relative.group",
+    ".education-section .glass-card",
+    ".ia-lab-section .glass-card",
+    ".contact-section .glass-panel",
+  ];
+
+  const revealItems = Array.from(document.querySelectorAll(motionTargets.join(",")));
+  revealItems.forEach((item, index) => {
+    item.classList.add("motion-reveal");
+    item.style.setProperty("--motion-delay", `${Math.min(index % 6, 5) * 70}ms`);
+  });
+
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("motion-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+  } else {
+    revealItems.forEach((item) => item.classList.add("motion-visible"));
+  }
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("section-motion-visible");
+        }
+      });
+    }, { threshold: 0.25 });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+  } else {
+    sections.forEach((section) => section.classList.add("section-motion-visible"));
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.querySelectorAll("model-viewer[autoplay]").forEach((viewer) => {
+      viewer.removeAttribute("autoplay");
+    });
+  }
+
+  document.querySelectorAll("model-viewer").forEach((viewer) => {
+    const fallback = viewer.querySelector(".hero-model-fallback");
+    viewer.addEventListener("load", () => {
+      viewer.classList.add("is-loaded");
+    }, { once: true });
+    viewer.addEventListener("error", () => {
+      viewer.classList.add("has-error");
+      if (fallback) {
+        fallback.textContent = "No se pudo cargar el modelo 3D";
+      }
+    }, { once: true });
+  });
 
   document.querySelectorAll("[data-line-numbers-for]").forEach((gutter) => {
     const code = document.getElementById(gutter.dataset.lineNumbersFor);
