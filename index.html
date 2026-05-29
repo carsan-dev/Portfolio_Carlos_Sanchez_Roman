@@ -24,12 +24,27 @@
 </head>
 
 <body class="bg-background-dark text-on-background min-h-screen overflow-x-hidden flex flex-col md:flex-row relative">
+  <div class="boot-overlay" id="boot-overlay" role="status" aria-label="Inicializando portfolio">
+    <div class="boot-terminal" aria-hidden="true">
+      <div class="boot-terminal-header">
+        <span></span><span></span><span></span>
+        <em>system/init.sh</em>
+      </div>
+      <div class="boot-terminal-body">
+        <p style="--boot-line: 0"><span>&gt;</span> init portfolio</p>
+        <p style="--boot-line: 1"><span>&gt;</span> loading profile.json</p>
+        <p style="--boot-line: 2"><span>&gt;</span> mounting projects</p>
+        <p style="--boot-line: 3"><span>&gt;</span> checking <strong>ai_specialization</strong></p>
+        <p style="--boot-line: 4"><span>&gt;</span> status: ready<span class="boot-cursor"></span></p>
+      </div>
+    </div>
+  </div>
   <div class="fixed inset-0 pointer-events-none z-0"
     style="background: radial-gradient(circle at 50% 50%, rgba(162, 255, 202, 0.05) 0%, transparent 100%);"></div>
-  <div class="fixed inset-0 grid-bg boot-grid pointer-events-none z-0 opacity-100"></div>
+  <div class="fixed inset-0 grid-bg pointer-events-none z-0 opacity-100"></div>
 
   <nav
-    class="hidden md:flex boot-sidebar flex-col h-screen w-sidebar-width fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-border-subtle text-primary font-code-md text-code-md z-40">
+    class="hidden md:flex flex-col h-screen w-sidebar-width fixed left-0 top-0 overflow-y-auto bg-surface-container-low border-r border-border-subtle text-primary font-code-md text-code-md z-40">
     <div class="p-gutter border-b border-border-subtle flex items-center gap-3">
       <div class="w-9 h-9 bg-surface flex items-center justify-center border border-border-subtle shrink-0">
         <span class="font-code-md text-code-md text-primary font-bold">CS</span>
@@ -65,7 +80,7 @@
   </nav>
 
   <header
-    class="md:hidden boot-topbar flex justify-between items-center w-full px-4 h-14 bg-background dark:bg-background border-b border-border-subtle fixed top-0 left-0 z-50">
+    class="md:hidden flex justify-between items-center w-full px-4 h-14 bg-background dark:bg-background border-b border-border-subtle fixed top-0 left-0 z-50">
     <span
       class="font-headline-xl-mobile text-headline-xl-mobile font-bold text-primary text-[20px]">DESARROLLADOR</span>
     <a class="text-on-surface-variant" href="#projects" aria-label="Ir a proyectos"><span
@@ -74,7 +89,7 @@
 
   <div class="flex-1 flex flex-col md:ml-[256px] min-h-screen w-full pt-14 md:pt-0 relative z-10">
     <header
-      class="hidden md:flex boot-topbar justify-between items-center w-full px-gutter h-12 bg-background dark:bg-background border-b border-border-subtle sticky top-0 z-30 transition-all duration-150">
+      class="hidden md:flex justify-between items-center w-full px-gutter h-12 bg-background dark:bg-background border-b border-border-subtle sticky top-0 z-30 transition-all duration-150">
       <div class="flex items-center gap-2"><span class="font-code-md text-code-md text-text-muted">~</span><span
           class="font-code-md text-code-md text-text-muted">/</span><span
           class="font-code-md text-code-md text-syntax-key" id="current-route">portfolio/root.ts</span></div>
@@ -84,7 +99,7 @@
     <main class="single-page-main flex-1 w-full pb-32">
       <section id="root" class="portfolio-section root-section">
         <!-- Hero / IDE Introduction -->
-        <section class="boot-hero flex flex-col gap-6 mt-8">
+        <section class="flex flex-col gap-6 mt-8">
           <div
             class="inline-flex items-center gap-2 px-3 py-1 bg-surface border border-border-subtle w-fit glass-panel">
             <span class="relative flex h-2 w-2">
@@ -118,7 +133,7 @@
         </section>
         <!-- JSON Skills Block (Code Editor Window) -->
         <section class="mt-8">
-          <div class="boot-editor bg-surface border border-border-subtle flex flex-col shadow-2xl overflow-hidden relative">
+          <div class="bg-surface border border-border-subtle flex flex-col shadow-2xl overflow-hidden relative">
             <!-- Subtle gradient glow behind the editor -->
             <div
               class="absolute -inset-1 bg-gradient-to-r from-primary/10 via-accent-ai/5 to-transparent blur-xl z-0 pointer-events-none">
@@ -1124,6 +1139,7 @@
     <button class="lightbox-close" type="button" aria-label="Cerrar captura ampliada">×</button>
     <img alt="" id="lightbox-image">
   </div>
+  <script src="js/index.js"></script>
   <script src="js/single-page.js"></script>
 </body>
 
