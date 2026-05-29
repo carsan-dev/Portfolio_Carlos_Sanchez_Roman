@@ -16,6 +16,4 @@ document.addEventListener("DOMContentLoaded", () => {
       workspaceStatusText.textContent = "WORKSPACE INITIALIZED!";
     }
   }, 3000);
-
-  console.log("Workspace Initialized. Welcome, Architect.");
 });
