@@ -288,6 +288,8 @@ html {
 }
 
 .vision-scan {
+  --cnn-start: 480ms;
+  --cnn-run: 2.05s;
   position: relative;
   width: 100%;
   height: 16rem;
@@ -319,8 +321,8 @@ html {
   transform: translateX(-120%);
 }
 
-.section-motion-visible .vision-scan::after {
-  animation: cnnScan 2.4s cubic-bezier(0.2, 0.76, 0.25, 1) forwards;
+.vision-scan.vision-sequence-visible::after {
+  animation: cnnScan var(--cnn-start) cubic-bezier(0.2, 0.76, 0.25, 1) forwards;
 }
 
 .vision-cnn-stage {
@@ -336,11 +338,17 @@ html {
   width: 25%;
   height: 60%;
   overflow: hidden;
+  opacity: 0;
+}
+
+.vision-sequence-visible .vision-cnn-input {
+  animation: stageAppear 180ms ease-out calc(var(--cnn-start) - 140ms) forwards;
 }
 
 .vision-cnn-input > span {
   position: absolute;
   display: block;
+  opacity: 0;
 }
 
 .house-sky {
@@ -390,8 +398,8 @@ html {
 .window-a { left: 34%; }
 .window-b { right: 34%; }
 
-.section-motion-visible .vision-cnn-input > span {
-  animation: inputToFeatures 2.4s steps(1, end) forwards;
+.vision-sequence-visible .vision-cnn-input > span {
+  animation: inputToFeatures var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
 .vision-kernel {
@@ -419,8 +427,8 @@ html {
   z-index: 3;
 }
 
-.section-motion-visible .vision-kernel {
-  animation: kernelRasterPass 2.4s steps(1, end) forwards;
+.vision-sequence-visible .vision-kernel {
+  animation: kernelRasterPass var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
 .vision-cnn-feature {
@@ -503,12 +511,12 @@ html {
     inset 0 -2rem 0 rgba(162, 255, 202, 0.03);
 }
 
-.section-motion-visible .vision-cnn-feature {
-  animation: featureResolve 2.4s steps(1, end) forwards;
+.vision-sequence-visible .vision-cnn-feature {
+  animation: featureResolve var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
-.section-motion-visible .feature-b { animation-delay: 160ms; }
-.section-motion-visible .feature-c { animation-delay: 320ms; }
+.vision-sequence-visible .feature-b { animation-delay: calc(var(--cnn-start) + 160ms); }
+.vision-sequence-visible .feature-c { animation-delay: calc(var(--cnn-start) + 320ms); }
 
 .vision-cnn-output {
   right: 4.5%;
@@ -522,8 +530,8 @@ html {
   overflow: hidden;
 }
 
-.section-motion-visible .vision-cnn-output {
-  animation: outputBoxReveal 2.4s steps(1, end) forwards;
+.vision-sequence-visible .vision-cnn-output {
+  animation: outputBoxReveal var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
 .rebuild-line,
@@ -553,8 +561,8 @@ html {
   transform: rotate(0deg) scaleX(0);
 }
 
-.section-motion-visible .rebuild-line {
-  animation: pieceAppear 2.4s steps(1, end) forwards;
+.vision-sequence-visible .rebuild-line {
+  animation: pieceAppear var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
 .rebuild-shape {
@@ -608,20 +616,20 @@ html {
 .shape-a::before { left: 17%; }
 .shape-a::after { right: 17%; }
 
-.section-motion-visible .shape-a::before,
-.section-motion-visible .shape-a::after {
-  animation: pieceAppear 2.4s steps(1, end) forwards;
-  animation-delay: 520ms;
+.vision-sequence-visible .shape-a::before,
+.vision-sequence-visible .shape-a::after {
+  animation: pieceAppear var(--cnn-run) steps(1, end) forwards;
+  animation-delay: calc(var(--cnn-start) + 520ms);
 }
 
-.section-motion-visible .rebuild-shape {
-  animation: pieceAppear 2.4s steps(1, end) forwards;
+.vision-sequence-visible .rebuild-shape {
+  animation: pieceAppear var(--cnn-run) steps(1, end) var(--cnn-start) forwards;
 }
 
-.section-motion-visible .shape-b { animation-delay: 0ms; }
-.section-motion-visible .line-c { animation-delay: 140ms; }
-.section-motion-visible .shape-a { animation-delay: 280ms; }
-.section-motion-visible .shape-c { animation-delay: 420ms; }
+.vision-sequence-visible .shape-b { animation-delay: var(--cnn-start); }
+.vision-sequence-visible .line-c { animation-delay: calc(var(--cnn-start) + 140ms); }
+.vision-sequence-visible .shape-a { animation-delay: calc(var(--cnn-start) + 280ms); }
+.vision-sequence-visible .shape-c { animation-delay: calc(var(--cnn-start) + 420ms); }
 
 .vision-cnn-label {
   position: absolute;
@@ -655,8 +663,9 @@ html {
   text-align: center;
 }
 
-.section-motion-visible .vision-cnn-label {
-  animation: labelFade 2.4s ease-out forwards;
+.vision-sequence-visible .vision-cnn-label {
+  opacity: 1;
+  transition: opacity 120ms ease-out calc(var(--cnn-start) - 80ms);
 }
 
 @keyframes cnnScan {
@@ -665,9 +674,14 @@ html {
   100% { transform: translateX(620%); opacity: 0; }
 }
 
+@keyframes stageAppear {
+  to { opacity: 1; }
+}
+
 @keyframes inputToFeatures {
-  0%, 50% { filter: blur(1.8px) grayscale(0.6); opacity: 0.95; }
-  58%, 100% { filter: blur(1.4px) grayscale(1) contrast(2.2); opacity: 0.34; }
+  0% { filter: blur(1.8px) grayscale(0.6); opacity: 0.95; }
+  56% { filter: blur(1.8px) grayscale(0.6); opacity: 0.95; }
+  64%, 100% { filter: blur(1.4px) grayscale(1) contrast(2.2); opacity: 0.34; }
 }
 
 @keyframes kernelPass {
@@ -688,23 +702,23 @@ html {
   40% { transform: translate(0, 4.3rem); opacity: 1; }
   45% { transform: translate(2.8rem, 4.3rem); opacity: 1; }
   50% { transform: translate(5.6rem, 4.3rem); opacity: 1; }
-  52% { transform: translate(8.4rem, 4.3rem); opacity: 1; }
-  53%, 100% { transform: translate(8.4rem, 4.3rem); opacity: 0; }
+  56% { transform: translate(8.4rem, 4.3rem); opacity: 1; }
+  57%, 100% { transform: translate(8.4rem, 4.3rem); opacity: 0; }
 }
 
 @keyframes featureResolve {
-  0%, 54% { transform: translateX(-0.2rem); opacity: 0; }
-  62%, 100% { transform: translateX(0); opacity: 0.82; }
+  0%, 58% { transform: translateX(-0.2rem); opacity: 0; }
+  66%, 100% { transform: translateX(0); opacity: 0.82; }
 }
 
 @keyframes outputBoxReveal {
-  0%, 64% { opacity: 0; }
-  68%, 100% { opacity: 1; }
+  0%, 80% { opacity: 0; }
+  84%, 100% { opacity: 1; }
 }
 
 @keyframes pieceAppear {
-  0%, 68% { opacity: 0; }
-  69%, 100% { opacity: 1; }
+  0%, 84% { opacity: 0; }
+  85%, 100% { opacity: 1; }
 }
 
 .line-c { --line-angle: 0deg; }
@@ -1936,14 +1950,14 @@ code,
 
   .route-flash,
   .ia-lab-section::before,
-  .section-motion-visible .vision-scan::after,
-  .section-motion-visible .vision-cnn-input span,
-  .section-motion-visible .vision-kernel,
-  .section-motion-visible .vision-cnn-feature,
-  .section-motion-visible .vision-cnn-output,
-  .section-motion-visible .rebuild-line,
-  .section-motion-visible .rebuild-shape,
-  .section-motion-visible .vision-cnn-label,
+  .vision-sequence-visible::after,
+  .vision-sequence-visible .vision-cnn-input span,
+  .vision-sequence-visible .vision-kernel,
+  .vision-sequence-visible .vision-cnn-feature,
+  .vision-sequence-visible .vision-cnn-output,
+  .vision-sequence-visible .rebuild-line,
+  .vision-sequence-visible .rebuild-shape,
+  .vision-sequence-visible .vision-cnn-label,
   .preview-chart span,
   .preview-table i,
   .invoice-lines i,
@@ -1953,27 +1967,27 @@ code,
     animation: none;
   }
 
-  .section-motion-visible .vision-cnn-input span {
+  .vision-sequence-visible .vision-cnn-input span {
     filter: blur(2px) grayscale(1) contrast(2.3);
     opacity: 0.32;
   }
 
-  .section-motion-visible .vision-kernel {
+  .vision-sequence-visible .vision-kernel {
     opacity: 0;
   }
 
-  .section-motion-visible .vision-cnn-feature {
+  .vision-sequence-visible .vision-cnn-feature {
     opacity: 0.82;
   }
 
-  .section-motion-visible .vision-cnn-output,
-  .section-motion-visible .rebuild-line,
-  .section-motion-visible .rebuild-shape,
-  .section-motion-visible .vision-cnn-label {
+  .vision-sequence-visible .vision-cnn-output,
+  .vision-sequence-visible .rebuild-line,
+  .vision-sequence-visible .rebuild-shape,
+  .vision-sequence-visible .vision-cnn-label {
     opacity: 1;
   }
 
-  .section-motion-visible .rebuild-line {
+  .vision-sequence-visible .rebuild-line {
     transform: rotate(var(--line-angle, 0deg)) scaleX(1);
   }
 

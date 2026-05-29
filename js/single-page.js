@@ -108,6 +108,21 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((section) => section.classList.add("section-motion-visible"));
   }
 
+  const visionScan = document.querySelector(".vision-scan");
+  if (visionScan && "IntersectionObserver" in window) {
+    const visionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("vision-sequence-visible");
+        visionObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -18% 0px", threshold: 0.45 });
+
+    visionObserver.observe(visionScan);
+  } else if (visionScan) {
+    visionScan.classList.add("vision-sequence-visible");
+  }
+
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let modelViewerScriptPromise;
   const loadModelViewerScript = () => {
